@@ -32,5 +32,6 @@ public class Board {
 
     public void delete() {
         this.status = BoardStatus.DELETED;
+        this.updatedAt = LocalDateTime.now();
     }
 }
