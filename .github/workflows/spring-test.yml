@@ -1,14 +1,23 @@
-name: Spring Boot Tests
+name: Backend Tests
 
 on:
   push:
     branches: [ main, develop ]
+    paths:
+      - 'backend/**'              # backend 폴더 내 모든 변경
+      - '.github/workflows/backend-test.yml'  # 워크플로우 자체 변경시에도
   pull_request:
     branches: [ main, develop ]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-test.yml'
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
     
     steps:
     - name: Checkout code
@@ -19,7 +28,8 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: 'gradle'  # Maven 사용시 'maven'으로 변경
+        cache: 'gradle'
+        cache-dependency-path: 'backend/build.gradle'
         
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
@@ -31,4 +41,4 @@ jobs:
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
-        files: '**/build/test-results/test/TEST-*.xml'
+        files: 'backend/build/test-results/test/TEST-*.xml'
