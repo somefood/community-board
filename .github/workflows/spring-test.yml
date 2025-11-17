@@ -37,9 +37,4 @@ jobs:
       
     - name: Run tests
       run: ./gradlew test
-      
-    - name: Publish test results
-      uses: EnricoMi/publish-unit-test-result-action@v2
-      if: always()
-      with:
-        files: 'backend/build/test-results/test/TEST-*.xml'
+
