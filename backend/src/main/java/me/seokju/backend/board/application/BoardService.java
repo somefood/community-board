@@ -20,7 +20,7 @@ public class BoardService {
     
     public Board deleteBoard(Long boardId) {
         Board board = boardRepository.findById(boardId)
-                .orElseThrow();
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글을 찾을 수 없습니다. id=" + boardId));
         board.delete();
         return board;
     }
