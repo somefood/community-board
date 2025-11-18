@@ -1,4 +1,4 @@
-package me.seokju.backend.member.domain;
+package me.seokju.backend.domain.member;
 
 import org.springframework.data.repository.Repository;
 

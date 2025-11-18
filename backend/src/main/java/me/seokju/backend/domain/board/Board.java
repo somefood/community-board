@@ -1,4 +1,4 @@
-package me.seokju.backend.board.domain;
+package me.seokju.backend.domain.board;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

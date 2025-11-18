@@ -1,9 +1,9 @@
 package me.seokju.backend.board.application;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import me.seokju.backend.board.domain.Board;
-import me.seokju.backend.board.domain.BoardStatus;
+import me.seokju.backend.application.board.BoardService;
+import me.seokju.backend.domain.board.Board;
+import me.seokju.backend.domain.board.BoardStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

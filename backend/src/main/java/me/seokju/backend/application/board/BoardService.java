@@ -1,8 +1,8 @@
-package me.seokju.backend.board.application;
+package me.seokju.backend.application.board;
 
 import lombok.RequiredArgsConstructor;
-import me.seokju.backend.board.domain.Board;
-import me.seokju.backend.board.domain.BoardRepository;
+import me.seokju.backend.domain.board.Board;
+import me.seokju.backend.domain.board.BoardRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
