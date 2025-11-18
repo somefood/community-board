@@ -1,7 +1,5 @@
-package me.seokju.backend.board.domain;
+package me.seokju.backend.domain.board;
 
-import me.seokju.backend.domain.board.Board;
-import me.seokju.backend.domain.board.BoardStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

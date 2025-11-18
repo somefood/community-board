@@ -1,7 +1,7 @@
-package me.seokju.backend.board.application;
+package me.seokju.backend.application.provided;
 
 import jakarta.persistence.EntityManager;
-import me.seokju.backend.application.board.BoardService;
+import me.seokju.backend.application.board.provied.BoardRegister;
 import me.seokju.backend.domain.board.Board;
 import me.seokju.backend.domain.board.BoardStatus;
 import org.junit.jupiter.api.Test;
@@ -13,17 +13,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Transactional
 @SpringBootTest
-class BoardServiceTest {
+class BoardRegisterTest {
 
     @Autowired
-    private BoardService boardService;
+    private BoardRegister boardRegister;
 
     @Autowired
     private EntityManager em;
 
     @Test 
     void createBoard() {
-        Board board = boardService.createBoard("title", "content");
+        Board board = boardRegister.create("title", "content");
         
         assertThat(board).isNotNull();
         assertThat(board.getTitle()).isEqualTo("title");
@@ -34,12 +34,12 @@ class BoardServiceTest {
     
     @Test 
     void deleteBoard() {
-        Board board = boardService.createBoard("title", "content");
+        Board board = boardRegister.create("title", "content");
         em.flush();
         em.clear();
         
         Long boardId = board.getId();
-        Board deletedBoard = boardService.deleteBoard(boardId);
+        Board deletedBoard = boardRegister.remove(boardId);
 
         assertThat(deletedBoard.getStatus()).isEqualTo(BoardStatus.DELETED);
         assertThat(deletedBoard.getUpdatedAt()).isNotNull();
