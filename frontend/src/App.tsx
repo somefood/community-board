@@ -1,4 +1,5 @@
 import './App.css'
+import PostItem from './components/PostItem'
 
 function App() {
   // 게시글 데이터 (나중에 서버에서 가져올 예정)
@@ -15,20 +16,13 @@ function App() {
       {/* 게시글 목록 */}
       <div>
         {posts.map((post) => (
-          <div
+          <PostItem
             key={post.id}
-            style={{
-              border: '1px solid #ddd',
-              padding: '15px',
-              marginBottom: '10px',
-              borderRadius: '5px'
-            }}
-          >
-            <h3>{post.title}</h3>
-            <p style={{ color: '#666', fontSize: '14px' }}>
-              작성자: {post.author} | 날짜: {post.date}
-            </p>
-          </div>
+            id={post.id}
+            title={post.title}
+            author={post.author}
+            date={post.date}
+          />
         ))}
       </div>
     </div>
