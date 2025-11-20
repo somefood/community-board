@@ -1,34 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // 게시글 데이터 (나중에 서버에서 가져올 예정)
+  const posts = [
+    { id: 1, title: '첫 번째 게시글', author: '홍길동', date: '2024-11-20' },
+    { id: 2, title: '리액트 공부 시작!', author: '김철수', date: '2024-11-20' },
+    { id: 3, title: '커뮤니티 보드 만들기', author: '이영희', date: '2024-11-19' },
+  ]
 
   return (
-    <>
+    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px' }}>
+      <h1>커뮤니티 게시판</h1>
+
+      {/* 게시글 목록 */}
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {posts.map((post) => (
+          <div
+            key={post.id}
+            style={{
+              border: '1px solid #ddd',
+              padding: '15px',
+              marginBottom: '10px',
+              borderRadius: '5px'
+            }}
+          >
+            <h3>{post.title}</h3>
+            <p style={{ color: '#666', fontSize: '14px' }}>
+              작성자: {post.author} | 날짜: {post.date}
+            </p>
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
