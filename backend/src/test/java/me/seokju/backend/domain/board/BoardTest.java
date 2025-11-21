@@ -10,7 +10,9 @@ class BoardTest {
     @Test
     @DisplayName("게시글을 생성한다")
     void create() {
-        var board = Board.create("title", "content");
+        BoardCreateRequest boardCreateRequest = new BoardCreateRequest("title", "content");
+
+        var board = Board.create(boardCreateRequest);
 
         assertThat(board.getTitle()).isEqualTo("title");
         assertThat(board.getContent()).isEqualTo("content");
@@ -21,7 +23,9 @@ class BoardTest {
     @Test
     @DisplayName("게시글을 삭제한다")
     void delete() {
-        var board = Board.create("title", "content");
+        BoardCreateRequest boardCreateRequest = new BoardCreateRequest("title", "content");
+
+        var board = Board.create(boardCreateRequest);
 
         board.delete();
 

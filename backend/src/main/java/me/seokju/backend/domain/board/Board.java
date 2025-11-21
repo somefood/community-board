@@ -36,8 +36,8 @@ public class Board {
         this.status = status;
     }
 
-    public static Board create(String title, String content) {
-        return new Board(title, content, BoardStatus.ACTIVE);
+    public static Board create(BoardCreateRequest boardCreateRequest) {
+        return new Board(boardCreateRequest.title(), boardCreateRequest.content(), BoardStatus.ACTIVE);
     }
 
     public void delete() {

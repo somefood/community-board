@@ -3,6 +3,7 @@ package me.seokju.backend.application.provided;
 import jakarta.persistence.EntityManager;
 import me.seokju.backend.application.board.provied.BoardRegister;
 import me.seokju.backend.domain.board.Board;
+import me.seokju.backend.domain.board.BoardCreateRequest;
 import me.seokju.backend.domain.board.BoardStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,9 @@ class BoardRegisterTest {
 
     @Test 
     void createBoard() {
-        Board board = boardRegister.create("title", "content");
+        BoardCreateRequest boardCreateRequest = new BoardCreateRequest("title", "content");
+
+        Board board = boardRegister.create(boardCreateRequest);
         
         assertThat(board).isNotNull();
         assertThat(board.getTitle()).isEqualTo("title");
@@ -34,7 +37,8 @@ class BoardRegisterTest {
     
     @Test 
     void deleteBoard() {
-        Board board = boardRegister.create("title", "content");
+        BoardCreateRequest boardCreateRequest = new BoardCreateRequest("title", "content");
+        Board board = boardRegister.create(boardCreateRequest);
         em.flush();
         em.clear();
         
